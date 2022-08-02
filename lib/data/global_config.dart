@@ -261,6 +261,19 @@ class GlobalConfig {
             "ctaPath": ""
           }
         ]
+      },
+      {
+        "widgetKey": "widget_key676",
+        "widgetName": "headline",
+        "widgetProperties": [
+          {
+            "title": "Entertainment Store",
+            "subtitle": "+5 % cashback",
+            "imageUrl": "https://i.ibb.co/KF1YPpN/Screenshot-2022-08-02-at-8-58-12-PM.png",
+            "ctaType": "",
+            "ctaPath": ""
+          }
+        ]
       }
     ]
   });

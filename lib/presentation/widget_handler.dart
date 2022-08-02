@@ -5,6 +5,7 @@ import 'package:app/entities/dynamic_response_conversion.dart';
 import 'package:app/presentation/neu_banner_widget.dart';
 import 'package:app/presentation/neu_carousal_widget.dart';
 import 'package:app/presentation/neu_grid_widget.dart';
+import 'package:app/presentation/neu_grid_with_background.dart';
 import 'package:app/presentation/neu_grid_with_title_widget.dart';
 import 'package:app/presentation/neu_pay_tab_widget.dart';
 import 'package:flutter/material.dart';
@@ -58,6 +59,8 @@ class _WidgetHandlerState extends State<WidgetHandler> {
         return  NeuGridWidget(widgetQ.widgetProperties!,);
       case "grid_3":
         return  NeuGridWithTitleWidget(widgetQ.widgetProperties!,);
+      case "grid_4":
+        return  NeuGridWithBackgroundWidget(widgetQ.widgetProperties!,);
 
       default:
         return Container();
