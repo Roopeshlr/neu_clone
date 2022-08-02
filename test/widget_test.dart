@@ -5,26 +5,55 @@
 // gestures. You can also use WidgetTester to find child widgets in the widget
 // tree, read text, and verify that the values of widget properties are correct.
 
+import 'package:app/data/global_config.dart';
+import 'package:app/entities/dynamic_response_conversion.dart';
+import 'package:app/presentation/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:network_image_mock/network_image_mock.dart';
 
 import 'package:app/main.dart';
 
+DynamicWidgets dynamicWidgets =
+    dynamicWidgetsFromJson(GlobalConfig.homePageConfig);
+
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  testWidgets("Flutter Dynamic Widget Smoke Test", (WidgetTester tester) async {
+    mockNetworkImagesFor(() async {
+      await tester.pumpWidget(const MyApp());
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+      await tester.pumpWidget(const MaterialApp(
+        home: HomePage(),
+      ));
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+      // Test grid_1 type widget text
+      testGridTypeOneWidgets();
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+      //Test dynamic widget of headline with key id
+      await tester.dragUntilVisible(find.byKey(const ValueKey('widget_key6')),
+          find.byKey(const ValueKey('parent_list_view')), Offset(0, -654));
+
+      //Test dynamic widget of headline with text
+
+      await tester.dragUntilVisible(find.text(getFirstWidgetString()),
+          find.byKey(const ValueKey('parent_list_view')), Offset(0, -500));
+    });
   });
 }
+
+String getFirstWidgetString() {
+  WidgetQ e =  dynamicWidgets.widgets!.firstWhere((element) => element.widgetName == "headline");
+  return e.widgetProperties!.first.title!;
+}
+
+
+void testGridTypeOneWidgets() {
+  for (var element in dynamicWidgets.widgets!) {
+    if (element.widgetName == 'grid_1') {
+      for (var element in element.widgetProperties!) {
+        expect(find.text(element.title!), findsOneWidget);
+      }
+    }
+  }
+}
+

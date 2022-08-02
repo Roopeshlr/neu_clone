@@ -35,6 +35,7 @@ class _WidgetHandlerState extends State<WidgetHandler> {
   Widget build(BuildContext context) {
     return Expanded(
       child: ListView.builder(
+         key: const Key("parent_list_view"),
           shrinkWrap: true,
           itemCount: dynamicWidgets.widgets!.length,
           itemBuilder: (context, index) {
@@ -46,21 +47,21 @@ class _WidgetHandlerState extends State<WidgetHandler> {
   Widget getWidgetByType(WidgetQ widgetQ) {
     switch (widgetQ.widgetName) {
       case "carousal":
-        return  NeuCarousalWidget(widgetQ.widgetProperties!,true);
+        return  NeuCarousalWidget(widgetQ.widgetProperties!,true,key: Key(widgetQ.widgetKey!),);
         case "carousal_without_ind":
-        return  NeuCarousalWidget(widgetQ.widgetProperties!,false);
+        return  NeuCarousalWidget(widgetQ.widgetProperties!,false,key: Key(widgetQ.widgetKey!));
       case "grid_1":
-        return  NeuPayTabWidget(widgetQ.widgetProperties!);
+        return  NeuPayTabWidget(widgetQ.widgetProperties!,key: Key(widgetQ.widgetKey!));
       case "banner_1":
-        return  NeuBannerWidget(widgetQ.widgetProperties!);
+        return  NeuBannerWidget(widgetQ.widgetProperties!,key: Key(widgetQ.widgetKey!));
       case "headline":
-        return  NeuHeadlineWidget(widgetQ.widgetProperties!);
+        return  NeuHeadlineWidget(widgetQ.widgetProperties!,key: Key(widgetQ.widgetKey!));
       case "grid_2":
-        return  NeuGridWidget(widgetQ.widgetProperties!,);
+        return  NeuGridWidget(widgetQ.widgetProperties!,key: Key(widgetQ.widgetKey!));
       case "grid_3":
-        return  NeuGridWithTitleWidget(widgetQ.widgetProperties!,);
+        return  NeuGridWithTitleWidget(widgetQ.widgetProperties!,key: Key(widgetQ.widgetKey!));
       case "grid_4":
-        return  NeuGridWithBackgroundWidget(widgetQ.widgetProperties!,);
+        return  NeuGridWithBackgroundWidget(widgetQ.widgetProperties!,key: Key(widgetQ.widgetKey!));
 
       default:
         return Container();
