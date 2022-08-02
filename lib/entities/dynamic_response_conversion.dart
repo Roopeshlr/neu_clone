@@ -53,6 +53,7 @@ class WidgetProperty {
     this.title,
     this.subtitle,
     this.imageUrl,
+    this.bgUrl,
     this.ctaType,
     this.ctaPath,
   });
@@ -60,6 +61,7 @@ class WidgetProperty {
   String? title;
   String? subtitle;
   String? imageUrl;
+  String? bgUrl;
   String? ctaType;
   String? ctaPath;
 
@@ -67,6 +69,7 @@ class WidgetProperty {
     title: json["title"],
     subtitle: json["subtitle"],
     imageUrl: json["imageUrl"],
+    bgUrl: json["bgUrl"],
     ctaType: json["ctaType"],
     ctaPath: json["ctaPath"],
   );

@@ -4,9 +4,12 @@ import 'package:app/data/global_config.dart';
 import 'package:app/entities/dynamic_response_conversion.dart';
 import 'package:app/presentation/neu_banner_widget.dart';
 import 'package:app/presentation/neu_carousal_widget.dart';
+import 'package:app/presentation/neu_grid_widget.dart';
 import 'package:app/presentation/neu_pay_tab_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart' show rootBundle;
+
+import 'package:app/presentation/neu_headline_widget.dart';
+
 
 class WidgetHandler extends StatefulWidget {
   const WidgetHandler({Key? key}) : super(key: key);
@@ -49,9 +52,12 @@ class _WidgetHandlerState extends State<WidgetHandler> {
       case "banner_1":
         return  NeuBannerWidget(widgetQ.widgetProperties!);
         break;
-      // case "headline":
-      //   return  NeuHeadlineWidget(widgetQ.widgetProperties!);
-      //   break;
+      case "headline":
+        return  NeuHeadlineWidget(widgetQ.widgetProperties!);
+        break;
+      case "grid_2":
+        return  NeuGridWidget(widgetQ.widgetProperties!);
+        break;
 
       default:
         return Container();
