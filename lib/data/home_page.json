@@ -1,0 +1,49 @@
+//{
+//  "widgets":[{
+//    "widgetKey":"widget_key1",
+//    "widgetName":"carousal",
+//    "widgetProperties":[
+//      {
+//        "title":"wow",
+//        "subtitle":"",
+//        "imageUrl":"",
+//        "ctaType":"",
+//        "ctaPath":"",
+//
+//      },
+//
+//      {
+//        "widgetKey":"widget_key1",
+//        "widgetName":"carousal",
+//        "widgetProperties":[
+//          {
+//            "title":"wow",
+//            "subtitle":"",
+//            "imageUrl":"",
+//            "ctaType":"",
+//            "ctaPath":"",
+//
+//          },
+//
+//          {
+//            "widgetKey":"widget_key1",
+//            "widgetName":"carousal",
+//            "widgetProperties":[
+//              {
+//                "title":"wow",
+//                "subtitle":"",
+//                "imageUrl":"",
+//                "ctaType":"",
+//                "ctaPath":"",
+//
+//              }
+//
+//            ]
+//
+//
+//          }
+//
+//
+//
+//
+//        ]
