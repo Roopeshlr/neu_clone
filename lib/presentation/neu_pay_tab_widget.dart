@@ -1,24 +1,33 @@
+import 'package:app/entities/dynamic_response_conversion.dart';
 import 'package:flutter/material.dart';
 
 class NeuPayTabWidget extends StatelessWidget {
-  const NeuPayTabWidget({Key? key}) : super(key: key);
+  final List<WidgetProperty> widgetProperty;
+  const NeuPayTabWidget(this.widgetProperty,{Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: _getRowChildren(),
+    return Padding(
+      padding: const EdgeInsets.all(24.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: _getRowChildren(),
+      ),
     );
   }
 
-  _getRowChildren() {
-    return Column(
+  List<Widget> _getRowChildren() {
+    return widgetProperty.map((e) => Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Image.network(
-          'https://tatadigital-dev.adobecqms.net/content/dam/tcp/app-core/app-content/network-logos/vaultribbons/Scan&Pay.png'
+          e.imageUrl!
           ,width: 52,height: 52,
         ),
-        const Text('Scan pay',style: TextStyle(fontSize: 15,color: Colors.white),)
+        const SizedBox(height: 12,),
+        Text('${e.title}',style: const TextStyle(fontSize: 15,color: Colors.white),)
       ],
-    );
+    )).toList();
   }
 }

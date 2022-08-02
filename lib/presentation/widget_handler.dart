@@ -1,29 +1,53 @@
+import 'dart:convert';
+
+import 'package:app/data/global_config.dart';
+import 'package:app/entities/dynamic_response_conversion.dart';
+import 'package:app/presentation/neu_banner_widget.dart';
 import 'package:app/presentation/neu_carousal_widget.dart';
 import 'package:app/presentation/neu_pay_tab_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart' show rootBundle;
 
-class WidgetHandler extends StatelessWidget {
+class WidgetHandler extends StatefulWidget {
   const WidgetHandler({Key? key}) : super(key: key);
+
+  @override
+  State<WidgetHandler> createState() => _WidgetHandlerState();
+}
+
+class _WidgetHandlerState extends State<WidgetHandler> {
+
+ late  DynamicWidgets dynamicWidgets;
+
+  @override
+  void initState() {
+  dynamicWidgets = dynamicWidgetsFromJson(GlobalConfig.homePageConfig);
+  print("Roope ${dynamicWidgets.widgets?.first.widgetName} ");
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: ListView.builder(
           shrinkWrap: true,
-          itemCount: 1,
-          itemBuilder: (context, builder) {
-            return getWidgetByType('grid_1');
+          itemCount: dynamicWidgets.widgets!.length,
+          itemBuilder: (context, index) {
+            return getWidgetByType(dynamicWidgets.widgets![index]);
           }),
     );
   }
 
-  Widget getWidgetByType(type) {
-    switch (type) {
+  Widget getWidgetByType(WidgetQ widgetQ) {
+    switch (widgetQ.widgetName) {
       case "carousal":
-        return const NeuCarousalWidget();
+        return  NeuCarousalWidget(widgetQ.widgetProperties!);
         break;
       case "grid_1":
-        return const NeuPayTabWidget();
+        return  NeuPayTabWidget(widgetQ.widgetProperties!);
+        break;
+      case "banner_1":
+        return  NeuBannerWidget(widgetQ.widgetProperties!);
         break;
       default:
         return Container();
