@@ -49,6 +49,10 @@ class _WidgetHandlerState extends State<WidgetHandler> {
       case "banner_1":
         return  NeuBannerWidget(widgetQ.widgetProperties!);
         break;
+      // case "headline":
+      //   return  NeuHeadlineWidget(widgetQ.widgetProperties!);
+      //   break;
+
       default:
         return Container();
     }

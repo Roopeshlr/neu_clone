@@ -8,7 +8,13 @@ class NeuBannerWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Padding(
+      padding: const EdgeInsets.only(top: 8,right: 24,left: 24,bottom: 8),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(8.0),
+        child: Image.network(widgetProperty.first.imageUrl!),
+      ),
+    );
   }
 }
 

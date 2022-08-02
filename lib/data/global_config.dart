@@ -77,6 +77,18 @@ class GlobalConfig {
             "ctaPath": ""
           }
         ]
+      },{
+        "widgetKey": "widget_key3",
+        "widgetName": "banner_1",
+        "widgetProperties": [
+          {
+            "title": "Scan & Pay",
+            "subtitle": "",
+            "imageUrl": "https://i.ibb.co/nCNzndR/Screenshot-2022-08-02-at-7-02-54-PM.png",
+            "ctaType": "",
+            "ctaPath": ""
+          }
+        ]
       }
     ]
   });
