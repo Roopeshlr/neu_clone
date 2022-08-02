@@ -44,7 +44,10 @@ class _WidgetHandlerState extends State<WidgetHandler> {
   Widget getWidgetByType(WidgetQ widgetQ) {
     switch (widgetQ.widgetName) {
       case "carousal":
-        return  NeuCarousalWidget(widgetQ.widgetProperties!);
+        return  NeuCarousalWidget(widgetQ.widgetProperties!,true);
+        break;
+        case "carousal_without_ind":
+        return  NeuCarousalWidget(widgetQ.widgetProperties!,false);
         break;
       case "grid_1":
         return  NeuPayTabWidget(widgetQ.widgetProperties!);
@@ -56,7 +59,7 @@ class _WidgetHandlerState extends State<WidgetHandler> {
         return  NeuHeadlineWidget(widgetQ.widgetProperties!);
         break;
       case "grid_2":
-        return  NeuGridWidget(widgetQ.widgetProperties!);
+        return  NeuGridWidget(widgetQ.widgetProperties!,);
         break;
 
       default:

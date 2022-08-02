@@ -7,7 +7,8 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class NeuCarousalWidget extends StatefulWidget {
    final List<WidgetProperty> widgetProperty;
-    const NeuCarousalWidget(this.widgetProperty,{Key? key}) : super(key: key);
+   final bool isIndicatorEnabled;
+    const NeuCarousalWidget(this.widgetProperty,this.isIndicatorEnabled,{Key? key}) : super(key: key);
 
 
   @override
@@ -59,7 +60,7 @@ class _NeuCarousalWidgetState extends State<NeuCarousalWidget> {
 
         const SizedBox(height: 5),
 
-        StreamBuilder<int>(
+        if(widget.isIndicatorEnabled)StreamBuilder<int>(
             stream: _currentPageIndicator,
             builder: (context, snapshot) {
               return AnimatedSmoothIndicator(

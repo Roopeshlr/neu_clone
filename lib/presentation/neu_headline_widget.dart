@@ -14,6 +14,8 @@ class NeuHeadlineWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(widgetProperty.first.title!,
                 style: const TextStyle(fontSize: 16,fontWeight: FontWeight.bold,color: Colors.white),),

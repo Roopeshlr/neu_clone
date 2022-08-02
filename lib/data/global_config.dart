@@ -172,6 +172,47 @@ class GlobalConfig {
           }
         ]
       },
+      {
+        "widgetKey": "widget_key6",
+        "widgetName": "headline",
+        "widgetProperties": [
+          {
+            "title": "Explore WestSide",
+            "subtitle": "Free Delivery",
+            "imageUrl": null,
+            "ctaType": "",
+            "ctaPath": ""
+          }
+        ]
+      },
+      {
+        "widgetKey": "widget_key1",
+        "widgetName": "carousal_without_ind",
+        "widgetProperties": [
+          {
+            "title": "wow",
+            "subtitle": "",
+            "imageUrl": "https://i.ibb.co/pdh56Fm/Screenshot-2022-08-02-at-8-29-10-PM.png",
+            "ctaType": "",
+            "ctaPath": ""
+          },
+          {
+            "title": "wow",
+            "subtitle": "",
+            "imageUrl": "https://i.ibb.co/pdh56Fm/Screenshot-2022-08-02-at-8-29-10-PM.png",
+            "ctaType": "",
+            "ctaPath": ""
+          },
+          {
+            "title": "wow",
+            "subtitle": "",
+            "imageUrl": "https://i.ibb.co/pdh56Fm/Screenshot-2022-08-02-at-8-29-10-PM.png",
+            "ctaType": "",
+            "ctaPath": ""
+          }
+        ]
+      }
+
     ]
   });
 }
