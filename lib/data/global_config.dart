@@ -145,7 +145,33 @@ class GlobalConfig {
             "ctaPath": ""
           }
         ]
-      }
+      },
+      {
+        "widgetKey": "widget_key6",
+        "widgetName": "headline",
+        "widgetProperties": [
+          {
+            "title": "Deal Of the day",
+            "subtitle": null,
+            "imageUrl": null,
+            "ctaType": "",
+            "ctaPath": ""
+          }
+        ]
+      },
+      {
+        "widgetKey": "widget_key7",
+        "widgetName": "banner_1",
+        "widgetProperties": [
+          {
+            "title": "Scan & Pay",
+            "subtitle": "",
+            "imageUrl": "https://i.ibb.co/QXv58JM/Screenshot-2022-08-02-at-7-58-47-PM.png",
+            "ctaType": "",
+            "ctaPath": ""
+          }
+        ]
+      },
     ]
   });
 }
