@@ -5,6 +5,7 @@ import 'package:app/entities/dynamic_response_conversion.dart';
 import 'package:app/presentation/neu_banner_widget.dart';
 import 'package:app/presentation/neu_carousal_widget.dart';
 import 'package:app/presentation/neu_grid_widget.dart';
+import 'package:app/presentation/neu_grid_with_title_widget.dart';
 import 'package:app/presentation/neu_pay_tab_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -45,22 +46,18 @@ class _WidgetHandlerState extends State<WidgetHandler> {
     switch (widgetQ.widgetName) {
       case "carousal":
         return  NeuCarousalWidget(widgetQ.widgetProperties!,true);
-        break;
         case "carousal_without_ind":
         return  NeuCarousalWidget(widgetQ.widgetProperties!,false);
-        break;
       case "grid_1":
         return  NeuPayTabWidget(widgetQ.widgetProperties!);
-        break;
       case "banner_1":
         return  NeuBannerWidget(widgetQ.widgetProperties!);
-        break;
       case "headline":
         return  NeuHeadlineWidget(widgetQ.widgetProperties!);
-        break;
       case "grid_2":
         return  NeuGridWidget(widgetQ.widgetProperties!,);
-        break;
+      case "grid_3":
+        return  NeuGridWithTitleWidget(widgetQ.widgetProperties!,);
 
       default:
         return Container();
