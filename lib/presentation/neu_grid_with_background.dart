@@ -5,7 +5,8 @@ import 'dart:math' as math;
 class NeuGridWithBackgroundWidget extends StatelessWidget {
   final List<WidgetProperty> widgetProperty;
   final String type;
-  const NeuGridWithBackgroundWidget(this.widgetProperty, {Key? key,this.type =""})
+  final Function(String, String)? onTapCallback;
+  const NeuGridWithBackgroundWidget(this.widgetProperty, {Key? key,this.type ="",this.onTapCallback})
       : super(key: key);
 
   @override
@@ -22,23 +23,31 @@ class NeuGridWithBackgroundWidget extends StatelessWidget {
               mainAxisSpacing: 20),
           itemCount: widgetProperty.length,
           itemBuilder: (BuildContext ctx, index) {
-            return Container(
-              width: 40,
-              height: 20,
-              alignment: Alignment.center,
-              decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
-              child: Stack(
-                children: [
-                  Positioned(
-                    child: Image.network(
-                      widgetProperty[index].imageUrl!,
-                      fit: BoxFit.fill,
-                      width: MediaQuery.of(context).size.width * 0.50,
-                      height: 200,
+            return GestureDetector(
+              onTap: () {
+                if (onTapCallback != null) {
+                  onTapCallback!(widgetProperty[index].ctaType!,
+                      widgetProperty[index].ctaPath!);
+                }
+              },
+              child: Container(
+                width: 40,
+                height: 20,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
+                child: Stack(
+                  children: [
+                    Positioned(
+                      child: Image.network(
+                        widgetProperty[index].imageUrl!,
+                        fit: BoxFit.fill,
+                        width: MediaQuery.of(context).size.width * 0.50,
+                        height: 200,
+                      ),
                     ),
-                  ),
-                 getOfferDetailWidget(context,index,type),
-                ],
+                   getOfferDetailWidget(context,index,type),
+                  ],
+                ),
               ),
             );
           }),

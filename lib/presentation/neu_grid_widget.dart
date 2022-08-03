@@ -4,7 +4,8 @@ import 'dart:math' as math;
 
 class NeuGridWidget extends StatelessWidget {
   final List<WidgetProperty> widgetProperty;
-  const NeuGridWidget(this.widgetProperty ,{Key? key}) : super(key: key);
+  final Function(String, String)? onTapCallback;
+  const NeuGridWidget(this.widgetProperty ,{Key? key,this.onTapCallback}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,31 +21,39 @@ class NeuGridWidget extends StatelessWidget {
               mainAxisSpacing: 20),
           itemCount: widgetProperty.length,
           itemBuilder: (BuildContext ctx, index) {
-            return Container(
-              width: 40,
-              height: 20,
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                color: Color((math.Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(1.0),
+            return GestureDetector(
+            onTap: () {
+              if (onTapCallback != null) {
+                onTapCallback!(widgetProperty[index].ctaType!,
+                    widgetProperty[index].ctaPath!);
+              }
+            },
+              child: Container(
+                width: 40,
+                height: 20,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  color: Color((math.Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(1.0),
 
-                  borderRadius: BorderRadius.circular(8)),
-              child: Stack(
-                children: [
-                  Positioned(
-                      bottom: 12,
-                      left: 12,
-                      child: Image.network(widgetProperty[index].imageUrl!,width: 24,height: 24,),),
-                  Positioned(
-                      top: 12,
-                      left: 12,
-                      child: Text(widgetProperty[index].title!,style: const TextStyle(
-                      fontWeight: FontWeight.bold,color: Colors.white,fontSize: 14),)),
+                    borderRadius: BorderRadius.circular(8)),
+                child: Stack(
+                  children: [
+                    Positioned(
+                        bottom: 12,
+                        left: 12,
+                        child: Image.network(widgetProperty[index].imageUrl!,width: 24,height: 24,),),
+                    Positioned(
+                        top: 12,
+                        left: 12,
+                        child: Text(widgetProperty[index].title!,style: const TextStyle(
+                        fontWeight: FontWeight.bold,color: Colors.white,fontSize: 14),)),
 
-                  if(widgetProperty[index].bgUrl!=null)Positioned(
-                      bottom: 12,
-                      right: 12,
-                      child: Image.network(widgetProperty[index].bgUrl!,width: 30,height: 50,),)
-                ],
+                    if(widgetProperty[index].bgUrl!=null)Positioned(
+                        bottom: 12,
+                        right: 12,
+                        child: Image.network(widgetProperty[index].bgUrl!,width: 30,height: 50,),)
+                  ],
+                ),
               ),
             );
           }),

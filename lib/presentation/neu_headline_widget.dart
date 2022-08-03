@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 
 class NeuHeadlineWidget extends StatelessWidget {
   final List<WidgetProperty> widgetProperty;
-  const NeuHeadlineWidget(this.widgetProperty, {Key? key}) : super(key: key);
+  final Function(String, String)? onTapCallback;
+  const NeuHeadlineWidget(this.widgetProperty, {Key? key,this.onTapCallback}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -38,10 +39,18 @@ class NeuHeadlineWidget extends StatelessWidget {
             ],
           ),
           if (widgetProperty.first.imageUrl != null)
-            Image.network(
-              widgetProperty.first.imageUrl!,
-              height: 24,
-              width: 24,
+            GestureDetector(
+              onTap: () {
+                if (onTapCallback != null) {
+                  onTapCallback!(widgetProperty.first.ctaType!,
+                      widgetProperty.first.ctaPath!);
+                }
+              },
+              child: Image.network(
+                widgetProperty.first.imageUrl!,
+                height: 24,
+                width: 24,
+              ),
             )
         ],
       ),
