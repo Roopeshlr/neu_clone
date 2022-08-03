@@ -73,19 +73,56 @@ class HomePage extends StatelessWidget {
               ),
             ),
           ),
+          getSearchPill(context),
         ],
       ),
     );
   }
 
-  getBody(context) {
+  Widget getBody(context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [getAppBarWidget(context), getMainContent(context)],
     );
   }
 
-  getMainContent(context) {
+  Widget getMainContent(context) {
     return const WidgetHandler();
+  }
+
+  Widget getSearchPill(context) {
+    return Row(
+      children:[
+       Padding(
+         padding: const EdgeInsets.all(8.0),
+         child: Container(
+           width: MediaQuery.of(context).size.width*0.70,
+           height: 30,
+           decoration: BoxDecoration(
+             color: Colors.black,
+             borderRadius: BorderRadius.circular(40),
+           ),
+           child: Row(
+             children: const [
+               SizedBox(width: 8,),
+               Icon(Icons.search,size: 18,color: Colors.white,),
+               SizedBox(width: 8,),
+               Text('Search',style: TextStyle(color: Colors.grey,fontSize: 16),)
+
+             ],
+           ),
+         ),
+       ),
+        Row(
+          children: const [
+            SizedBox(width: 8,),
+            Icon(Icons.location_on_rounded,size: 18,color: Colors.white,),
+            SizedBox(width: 8,),
+            Text('563125',style: TextStyle(color: Colors.white,fontSize: 14),)
+          ],
+        )
+
+      ],
+    );
   }
 }

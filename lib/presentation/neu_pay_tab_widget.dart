@@ -23,7 +23,7 @@ class NeuPayTabWidget extends StatelessWidget {
       children: [
         Image.network(
           e.imageUrl!
-          ,width: 52,height: 52,
+          ,width: 48,height: 48,
         ),
         const SizedBox(height: 12,),
         Text('${e.title}',style: const TextStyle(fontSize: 15,color: Colors.white),)

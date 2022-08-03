@@ -10,6 +10,7 @@ import 'package:app/presentation/neu_grid_with_background.dart';
 import 'package:app/presentation/neu_grid_with_title_widget.dart';
 import 'package:app/presentation/neu_horizontal_scroll_widget.dart';
 import 'package:app/presentation/neu_pay_tab_widget.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:app/presentation/neu_headline_widget.dart';
@@ -22,12 +23,15 @@ class WidgetHandler extends StatefulWidget {
 }
 
 class _WidgetHandlerState extends State<WidgetHandler> {
+  String tag = "WidgetHandler";
   late DynamicWidgets dynamicWidgets;
 
   @override
   void initState() {
     dynamicWidgets = dynamicWidgetsFromJson(GlobalConfig.homePageConfig);
-    print("Roope ${dynamicWidgets.widgets?.first.widgetName} ");
+    if (kDebugMode) {
+      print("$tag ${dynamicWidgets.widgets?.first.widgetName} ");
+    }
     super.initState();
   }
 
