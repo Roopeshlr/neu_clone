@@ -4,18 +4,20 @@ import 'dart:math' as math;
 
 class NeuGridWithBackgroundWidget extends StatelessWidget {
   final List<WidgetProperty> widgetProperty;
-  const NeuGridWithBackgroundWidget(this.widgetProperty ,{Key? key}) : super(key: key);
+  final String type;
+  const NeuGridWithBackgroundWidget(this.widgetProperty, {Key? key,this.type =""})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 8,right: 24,left: 24,bottom: 8),
+      padding: const EdgeInsets.only(top: 8, right: 24, left: 24, bottom: 8),
       child: GridView.builder(
           physics: const NeverScrollableScrollPhysics(),
           shrinkWrap: true,
           gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-              maxCrossAxisExtent: 150,
-              childAspectRatio: 2/1.8,
+              maxCrossAxisExtent: 200,
+              childAspectRatio: 3 / 3,
               crossAxisSpacing: 10,
               mainAxisSpacing: 20),
           itemCount: widgetProperty.length,
@@ -24,31 +26,90 @@ class NeuGridWithBackgroundWidget extends StatelessWidget {
               width: 40,
               height: 20,
               alignment: Alignment.center,
-              decoration: BoxDecoration(
-                  color: Color((math.Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(1.0),
-
-                  borderRadius: BorderRadius.circular(8)),
+              decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
               child: Stack(
                 children: [
                   Positioned(
-                    bottom: 12,
-                    left: 12,
-                    child: Image.network(widgetProperty[index].imageUrl!,width: 24,height: 24,),),
-                  Positioned(
-                      top: 12,
-                      left: 12,
-                      child: Text(widgetProperty[index].title!,style: const TextStyle(
-                          fontWeight: FontWeight.bold,color: Colors.white,fontSize: 14),)),
-
-                  if(widgetProperty[index].bgUrl!=null)Positioned(
-                    bottom: 12,
-                    right: 12,
-                    child: Image.network(widgetProperty[index].bgUrl!,width: 30,height: 50,),)
+                    child: Image.network(
+                      widgetProperty[index].imageUrl!,
+                      fit: BoxFit.fill,
+                      width: MediaQuery.of(context).size.width * 0.50,
+                      height: 200,
+                    ),
+                  ),
+                 getOfferDetailWidget(context,index,type),
                 ],
               ),
             );
           }),
     );
   }
-}
 
+  Widget getOfferDetailWidget(context,int index,String type) {
+
+    switch (type) {
+      case "grid_4":
+        return Positioned(
+            bottom: 0,
+            child: Container(
+              width: MediaQuery.of(context).size.width * 0.43,
+              height: 60,
+              padding: const EdgeInsets.only(left:12 ,right:12 ,top:8 ,bottom:4 ),
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(8)),
+              child: Center(
+                child: Text(
+                  widgetProperty[index].title!,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                    fontSize: 14,
+                  ),
+                  maxLines: 2,
+                ),
+              ),
+            ));
+      case "grid_5":
+        return Positioned(
+            bottom: 0,
+            child: Container(
+              width: MediaQuery.of(context).size.width * 0.43,
+              height: 60,
+              padding: const EdgeInsets.only(left:12 ,right:12 ,top:8 ,bottom:4 ),
+              decoration: const BoxDecoration(
+                  color: Colors.white,),
+              child: Column(
+                children: [
+                  Text(
+                    widgetProperty[index].title!,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                      fontSize: 14,
+                    ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.only(left: 12,right: 12,top: 4,bottom: 4),
+                    child: Divider(height: 2,thickness: 2,),
+                  ),
+                  Text(
+                    widgetProperty[index].subtitle!,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                      fontSize: 14,
+                    ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ],
+              ),
+            ));
+      default:
+        return Container();
+    }
+  }
+}
