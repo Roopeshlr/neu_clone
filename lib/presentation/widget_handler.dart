@@ -1,4 +1,3 @@
-
 import 'package:app/data/global_config.dart';
 import 'package:app/entities/dynamic_response_conversion.dart';
 import 'package:app/presentation/neu_banner_widget.dart';
@@ -142,7 +141,9 @@ class _WidgetHandlerState extends State<WidgetHandler> {
   void _handleCallBack(String type, String path) {
     switch (type) {
       case "webview":
-        print(path);
+        if (kDebugMode) {
+          print(path);
+        }
         Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => NeuWebviewWidget(path)),

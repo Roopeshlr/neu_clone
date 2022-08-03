@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 class NeuHeadlineWidget extends StatelessWidget {
   final List<WidgetProperty> widgetProperty;
   final Function(String, String)? onTapCallback;
-  const NeuHeadlineWidget(this.widgetProperty, {Key? key,this.onTapCallback}) : super(key: key);
+  const NeuHeadlineWidget(this.widgetProperty, {Key? key, this.onTapCallback})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {

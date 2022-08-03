@@ -1,4 +1,3 @@
-import 'dart:ui';
 
 import 'package:app/presentation/widget_handler.dart';
 import 'package:flutter/material.dart';
@@ -7,8 +6,6 @@ import 'package:google_fonts/google_fonts.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -93,48 +90,67 @@ class HomePage extends StatelessWidget {
 
   Widget getSearchPill(context) {
     return Row(
-      children:[
+      children: [
         GestureDetector(
-          onTap: (){
+          onTap: () {
             Fluttertoast.showToast(
                 msg: "Search Not implemented",
                 toastLength: Toast.LENGTH_SHORT,
                 gravity: ToastGravity.BOTTOM,
                 backgroundColor: Colors.white,
                 textColor: Colors.black,
-                fontSize: 16.0
-            );
+                fontSize: 16.0);
           },
-         child: Padding(
-           padding: const EdgeInsets.all(8.0),
-           child: Container(
-             width: MediaQuery.of(context).size.width*0.70,
-             height: 30,
-             decoration: BoxDecoration(
-               color: Colors.black,
-               borderRadius: BorderRadius.circular(40),
-             ),
-             child: Row(
-               children: const [
-                 SizedBox(width: 8,),
-                 Icon(Icons.search,size: 18,color: Colors.white,),
-                 SizedBox(width: 8,),
-                 Text('Search',style: TextStyle(color: Colors.grey,fontSize: 16),)
-
-               ],
-             ),
-           ),
-         ),
-       ),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              width: MediaQuery.of(context).size.width * 0.70,
+              height: 30,
+              decoration: BoxDecoration(
+                color: Colors.black,
+                borderRadius: BorderRadius.circular(40),
+              ),
+              child: Row(
+                children: const [
+                  SizedBox(
+                    width: 8,
+                  ),
+                  Icon(
+                    Icons.search,
+                    size: 18,
+                    color: Colors.white,
+                  ),
+                  SizedBox(
+                    width: 8,
+                  ),
+                  Text(
+                    'Search',
+                    style: TextStyle(color: Colors.grey, fontSize: 16),
+                  )
+                ],
+              ),
+            ),
+          ),
+        ),
         Row(
           children: const [
-            SizedBox(width: 8,),
-            Icon(Icons.location_on_rounded,size: 18,color: Colors.white,),
-            SizedBox(width: 8,),
-            Text('563125',style: TextStyle(color: Colors.white,fontSize: 14),)
+            SizedBox(
+              width: 8,
+            ),
+            Icon(
+              Icons.location_on_rounded,
+              size: 18,
+              color: Colors.white,
+            ),
+            SizedBox(
+              width: 8,
+            ),
+            Text(
+              '563125',
+              style: TextStyle(color: Colors.white, fontSize: 14),
+            )
           ],
         )
-
       ],
     );
   }

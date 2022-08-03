@@ -5,53 +5,70 @@ import 'dart:math' as math;
 class NeuGridWidget extends StatelessWidget {
   final List<WidgetProperty> widgetProperty;
   final Function(String, String)? onTapCallback;
-  const NeuGridWidget(this.widgetProperty ,{Key? key,this.onTapCallback}) : super(key: key);
+  const NeuGridWidget(this.widgetProperty, {Key? key, this.onTapCallback})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 8,right: 24,left: 24,bottom: 8),
+      padding: const EdgeInsets.only(top: 8, right: 24, left: 24, bottom: 8),
       child: GridView.builder(
-        physics: const NeverScrollableScrollPhysics(),
-        shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          shrinkWrap: true,
           gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
               maxCrossAxisExtent: 150,
-              childAspectRatio: 2/1.8,
+              childAspectRatio: 2 / 1.8,
               crossAxisSpacing: 10,
               mainAxisSpacing: 20),
           itemCount: widgetProperty.length,
           itemBuilder: (BuildContext ctx, index) {
             return GestureDetector(
-            onTap: () {
-              if (onTapCallback != null) {
-                onTapCallback!(widgetProperty[index].ctaType!,
-                    widgetProperty[index].ctaPath!);
-              }
-            },
+              onTap: () {
+                if (onTapCallback != null) {
+                  onTapCallback!(widgetProperty[index].ctaType!,
+                      widgetProperty[index].ctaPath!);
+                }
+              },
               child: Container(
                 width: 40,
                 height: 20,
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
-                  color: Color((math.Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(1.0),
-
+                    color:
+                        Color((math.Random().nextDouble() * 0xFFFFFF).toInt())
+                            .withOpacity(1.0),
                     borderRadius: BorderRadius.circular(8)),
                 child: Stack(
                   children: [
                     Positioned(
-                        bottom: 12,
-                        left: 12,
-                        child: Image.network(widgetProperty[index].imageUrl!,width: 24,height: 24,),),
+                      bottom: 12,
+                      left: 12,
+                      child: Image.network(
+                        widgetProperty[index].imageUrl!,
+                        width: 24,
+                        height: 24,
+                      ),
+                    ),
                     Positioned(
                         top: 12,
                         left: 12,
-                        child: Text(widgetProperty[index].title!,style: const TextStyle(
-                        fontWeight: FontWeight.bold,color: Colors.white,fontSize: 14),)),
-
-                    if(widgetProperty[index].bgUrl!=null)Positioned(
+                        child: Text(
+                          widgetProperty[index].title!,
+                          style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                              fontSize: 14),
+                        )),
+                    if (widgetProperty[index].bgUrl != null)
+                      Positioned(
                         bottom: 12,
                         right: 12,
-                        child: Image.network(widgetProperty[index].bgUrl!,width: 30,height: 50,),)
+                        child: Image.network(
+                          widgetProperty[index].bgUrl!,
+                          width: 30,
+                          height: 50,
+                        ),
+                      )
                   ],
                 ),
               ),
@@ -60,4 +77,3 @@ class NeuGridWidget extends StatelessWidget {
     );
   }
 }
-

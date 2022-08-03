@@ -31,12 +31,12 @@ void main() {
 
       //Test dynamic widget of headline with key id
       await tester.dragUntilVisible(find.byKey(const ValueKey('widget_key6')),
-          find.byKey(const ValueKey('parent_list_view')), Offset(0, -654));
+          find.byKey(const ValueKey('parent_list_view')), const Offset(0, -654));
 
       //Test dynamic widget of headline with text
 
       await tester.dragUntilVisible(find.text(getFirstWidgetString()),
-          find.byKey(const ValueKey('parent_list_view')), Offset(0, -500));
+          find.byKey(const ValueKey('parent_list_view')), const Offset(0, -500));
     });
   });
 }

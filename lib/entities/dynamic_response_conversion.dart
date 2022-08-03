@@ -4,7 +4,8 @@
 
 import 'dart:convert';
 
-DynamicWidgets dynamicWidgetsFromJson(String str) => DynamicWidgets.fromJson(json.decode(str));
+DynamicWidgets dynamicWidgetsFromJson(String str) =>
+    DynamicWidgets.fromJson(json.decode(str));
 
 String dynamicWidgetsToJson(DynamicWidgets data) => json.encode(data.toJson());
 
@@ -16,12 +17,13 @@ class DynamicWidgets {
   List<WidgetQ>? widgets;
 
   factory DynamicWidgets.fromJson(Map<String, dynamic> json) => DynamicWidgets(
-    widgets: List<WidgetQ>.from(json["widgets"].map((x) => WidgetQ.fromJson(x))),
-  );
+        widgets:
+            List<WidgetQ>.from(json["widgets"].map((x) => WidgetQ.fromJson(x))),
+      );
 
   Map<String, dynamic> toJson() => {
-    "widgets": List<dynamic>.from(widgets!.map((x) => x.toJson())),
-  };
+        "widgets": List<dynamic>.from(widgets!.map((x) => x.toJson())),
+      };
 }
 
 class WidgetQ {
@@ -36,16 +38,18 @@ class WidgetQ {
   List<WidgetProperty>? widgetProperties;
 
   factory WidgetQ.fromJson(Map<String, dynamic> json) => WidgetQ(
-    widgetKey: json["widgetKey"],
-    widgetName: json["widgetName"],
-    widgetProperties: List<WidgetProperty>.from(json["widgetProperties"].map((x) => WidgetProperty.fromJson(x))),
-  );
+        widgetKey: json["widgetKey"],
+        widgetName: json["widgetName"],
+        widgetProperties: List<WidgetProperty>.from(
+            json["widgetProperties"].map((x) => WidgetProperty.fromJson(x))),
+      );
 
   Map<String, dynamic> toJson() => {
-    "widgetKey": widgetKey,
-    "widgetName": widgetName,
-    "widgetProperties": List<dynamic>.from(widgetProperties!.map((x) => x.toJson())),
-  };
+        "widgetKey": widgetKey,
+        "widgetName": widgetName,
+        "widgetProperties":
+            List<dynamic>.from(widgetProperties!.map((x) => x.toJson())),
+      };
 }
 
 class WidgetProperty {
@@ -66,19 +70,19 @@ class WidgetProperty {
   String? ctaPath;
 
   factory WidgetProperty.fromJson(Map<String, dynamic> json) => WidgetProperty(
-    title: json["title"],
-    subtitle: json["subtitle"],
-    imageUrl: json["imageUrl"],
-    bgUrl: json["bgUrl"],
-    ctaType: json["ctaType"],
-    ctaPath: json["ctaPath"],
-  );
+        title: json["title"],
+        subtitle: json["subtitle"],
+        imageUrl: json["imageUrl"],
+        bgUrl: json["bgUrl"],
+        ctaType: json["ctaType"],
+        ctaPath: json["ctaPath"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "title": title,
-    "subtitle": subtitle,
-    "imageUrl": imageUrl,
-    "ctaType": ctaType,
-    "ctaPath": ctaPath,
-  };
+        "title": title,
+        "subtitle": subtitle,
+        "imageUrl": imageUrl,
+        "ctaType": ctaType,
+        "ctaPath": ctaPath,
+      };
 }

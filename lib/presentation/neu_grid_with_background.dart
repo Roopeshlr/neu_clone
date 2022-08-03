@@ -1,12 +1,13 @@
 import 'package:app/entities/dynamic_response_conversion.dart';
 import 'package:flutter/material.dart';
-import 'dart:math' as math;
+
 
 class NeuGridWithBackgroundWidget extends StatelessWidget {
   final List<WidgetProperty> widgetProperty;
   final String type;
   final Function(String, String)? onTapCallback;
-  const NeuGridWithBackgroundWidget(this.widgetProperty, {Key? key,this.type ="",this.onTapCallback})
+  const NeuGridWithBackgroundWidget(this.widgetProperty,
+      {Key? key, this.type = "", this.onTapCallback})
       : super(key: key);
 
   @override
@@ -34,7 +35,8 @@ class NeuGridWithBackgroundWidget extends StatelessWidget {
                 width: 40,
                 height: 20,
                 alignment: Alignment.center,
-                decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
+                decoration:
+                    BoxDecoration(borderRadius: BorderRadius.circular(12)),
                 child: Stack(
                   children: [
                     Positioned(
@@ -45,7 +47,7 @@ class NeuGridWithBackgroundWidget extends StatelessWidget {
                         height: 200,
                       ),
                     ),
-                   getOfferDetailWidget(context,index,type),
+                    getOfferDetailWidget(context, index, type),
                   ],
                 ),
               ),
@@ -54,8 +56,7 @@ class NeuGridWithBackgroundWidget extends StatelessWidget {
     );
   }
 
-  Widget getOfferDetailWidget(context,int index,String type) {
-
+  Widget getOfferDetailWidget(context, int index, String type) {
     switch (type) {
       case "grid_4":
         return Positioned(
@@ -63,10 +64,10 @@ class NeuGridWithBackgroundWidget extends StatelessWidget {
             child: Container(
               width: MediaQuery.of(context).size.width * 0.43,
               height: 60,
-              padding: const EdgeInsets.only(left:12 ,right:12 ,top:8 ,bottom:4 ),
+              padding:
+                  const EdgeInsets.only(left: 12, right: 12, top: 8, bottom: 4),
               decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(8)),
+                  color: Colors.white, borderRadius: BorderRadius.circular(8)),
               child: Center(
                 child: Text(
                   widgetProperty[index].title!,
@@ -85,9 +86,11 @@ class NeuGridWithBackgroundWidget extends StatelessWidget {
             child: Container(
               width: MediaQuery.of(context).size.width * 0.43,
               height: 60,
-              padding: const EdgeInsets.only(left:12 ,right:12 ,top:8 ,bottom:4 ),
+              padding:
+                  const EdgeInsets.only(left: 12, right: 12, top: 8, bottom: 4),
               decoration: const BoxDecoration(
-                  color: Colors.white,),
+                color: Colors.white,
+              ),
               child: Column(
                 children: [
                   Text(
@@ -101,8 +104,12 @@ class NeuGridWithBackgroundWidget extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                   ),
                   const Padding(
-                    padding: EdgeInsets.only(left: 12,right: 12,top: 4,bottom: 4),
-                    child: Divider(height: 2,thickness: 2,),
+                    padding:
+                        EdgeInsets.only(left: 12, right: 12, top: 4, bottom: 4),
+                    child: Divider(
+                      height: 2,
+                      thickness: 2,
+                    ),
                   ),
                   Text(
                     widgetProperty[index].subtitle!,
